@@ -1,0 +1,38 @@
+
+<ion-content [fullscreen]="true">
+  <!-- div principal -->
+  <div id="divLogin">
+    <div id="bienvenido">
+      <h1>Bienvenido a TeLlevoAPP</h1>
+    </div>
+    <b></b>
+    <!-- inputs -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          Login
+        </ion-card-title>
+      </ion-card-header>
+      <form [formGroup]="formularioLogin">
+        <ion-item>
+          <ion-label position="floating">Usuario:</ion-label>
+          <ion-input formControlName="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña:</ion-label>
+          <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item>
+        <!-- fin inputs -->
+      </form>
+              <!-- boton para iniciar -->
+              <br>
+              <ion-button expand="block" (click)="ingresar()">Ingresar</ion-button>
+              <br>
+              <ion-button expand="block" color="success" [routerLink]="['/registro']">registrarse</ion-button>
+    </ion-card>
+
+
+    <b></b>
+    <p>¿Olvidaste la contraseña? <a target="_blank" rel="contra" href="recuperar-pass">Cambiar contraseña</a></p>
+  </div>
+</ion-content>
