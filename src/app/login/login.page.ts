@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AlertController, NavController } from '@ionic/angular';
+import { DbService } from '../services/db.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginPage implements OnInit {
   formularioLogin: FormGroup;
 
 
-  constructor(public fb: FormBuilder, public alertController: AlertController, public navCTRL: NavController) { 
+  constructor(public fb: FormBuilder, public alertController: AlertController, public navCTRL: NavController, private dbService: DbService) { 
 
     this.formularioLogin = this.fb.group({
       'nombre': new FormControl("",Validators.required),
@@ -34,7 +35,7 @@ export class LoginPage implements OnInit {
       var usuario = JSON.parse(usuarioJson);
   
       if (usuario.nombre == f.nombre && usuario.password == f.password){
-        console.log(f.nombre);
+        console.log(f.nombre, f.password);
         localStorage.setItem('ingresado','true');
         this.navCTRL.navigateRoot(['/menu', { nombre: f.nombre }]);
 

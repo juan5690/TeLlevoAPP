@@ -25,4 +25,30 @@ export class ConductorPage implements OnInit {
   ngOnInit() {
   }
 
+  async registrarAuto(){
+    var f = this.formularioAuto.value;
+    if (this.formularioAuto.invalid){
+      const alert = await this.alertController.create({
+        header: 'Error al registrar vehiculo',
+        message: 'Debes completar todos los campos!',
+        buttons: ['Aceptar'],
+      });
+  
+      await alert.present();
+      return;
+    }
+
+    var auto = {
+      marca: f.marca,
+      modelo: f.modelo,
+      patente: f.patente,
+      precio_viaje: f.precio_viaje
+    }
+
+    localStorage.setItem('auto', JSON.stringify(auto));
+
+    localStorage.setItem('registrado','true');
+    this.navCTRL.navigateRoot(['/menu', { auto: f.patente }]);
+  }
+
 }

@@ -26,6 +26,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'registro',
+    redirectTo: 'registro',
+    pathMatch: 'full'
+  },
+
+  {
     path: '**',
     redirectTo: 'e404',
     pathMatch: 'full'
@@ -41,8 +47,9 @@ const routes: Routes = [
   },
   {
     path: 'menu',
-    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule),
-    canActivate: [DbService]
+    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
+    /* activar cuando se ejecute en emulador */
+    /* canActivate: [DbService] */
   },
   {
     path: 'registro',
