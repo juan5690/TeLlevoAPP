@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { HomePage } from './../home/home.page';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,8 +11,14 @@ import { Component, OnInit } from '@angular/core';
 
 export class MenuPage implements OnInit {
 
-  nombreUsuario = localStorage.getItem('usuario.nombre');
-  constructor() { }
+  nombreUsuario: string | null = '';
+
+  constructor(private route: ActivatedRoute) {
+    // Obtener el valor de 'nombre' del parámetro
+    this.route.params.subscribe(params => {
+      this.nombreUsuario = params['nombre'];
+    });
+  }
 
   ngOnInit() {
   }
